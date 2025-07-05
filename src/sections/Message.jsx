@@ -12,7 +12,7 @@ export const Message = () => {
         const secondSplit = SplitText.create(".second-message", {
           type: "words"
         }) 
-        const messageSplit = SplitText.create(".messsage-content", {
+        const messageSplit = SplitText.create(".message-content p", {
           type: "words, lines",
           linesClass: "paragraph-lines"
         }) 
@@ -58,6 +58,22 @@ export const Message = () => {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           ease: "circ.out"
         }) 
+
+        const paragraphTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".message-content p",
+            start: "top 80%",
+            // markers: true
+          }
+        })
+
+        paragraphTl.from(messageSplit.words, {
+          yPercent: 300,
+          rotate: 3,
+          ease: "power1.inOut",
+          duration: 1,
+          stagger: 0.01
+        })
     })
 
 
